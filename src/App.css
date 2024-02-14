@@ -71,6 +71,7 @@ h4 {
   margin-top: 0px; /* Adjust as needed */
   text-align: left;
   font-size: 14px;
+  line-height: unset;
 }
 
 
@@ -92,6 +93,7 @@ h4 {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+
 }
 
 
