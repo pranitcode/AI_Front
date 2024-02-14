@@ -12,7 +12,7 @@ const App = () => {
   };
 
   const handleSummarizeClick = () => {
-    axios.post('/summarize', { text: textInput }, {
+    axios.post('/app/summarize', { text: textInput }, {
       headers: {
         'Content-Type': 'application/json'
       }
