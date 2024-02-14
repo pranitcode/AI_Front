@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './App.css';
 
 const App = () => {
@@ -12,21 +11,26 @@ const App = () => {
   };
 
   const handleSummarizeClick = () => {
-    axios.post('/app/summarize', { text: textInput }, {
+    fetch('/app/summarize', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify({ text: textInput })
     })
     .then(response => {
-      setSummary(response.data.summary);
+      if (!response.ok) {
+        throw new Error('Error summarizing text');
+      }
+      return response.json();
+    })
+    .then(data => {
+      setSummary(data.summary);
       setError('');
     })
     .catch(error => {
       setError('Error summarizing text. Please try again.');
     });
-
-    // setTextInput('');
   };
 
   return (
