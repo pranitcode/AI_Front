@@ -36,31 +36,40 @@ const App = () => {
   return (
     <div className="container"> 
       <h4>Smart Summarization</h4>
-      
-      <div className="textarea-container">
-        <textarea
-          className="textarea"
-          placeholder="Enter text to summarize..."
-          value={textInput}
-          onChange={handleTextInputChange}
-          rows={10}
-          cols={50}
-        />
-      </div>
+      <div className="content-container">
+        <div className="input-container">
+          <div className="textarea-container">
+            <textarea
+              className="textarea"
+              placeholder="Enter text to summarize..."
+              value={textInput}
+              onChange={handleTextInputChange}
+              rows={10}
+              cols={50}
+            />
+          </div>
 
-      <div className="button-container">
-        <button className="button" onClick={handleSummarizeClick} disabled={!textInput.trim().length}>
-          Summarize
-        </button>
-      </div>
-
-      {error && <div className="error">{error}</div>}
-      {summary && (
-        <div className="response-box">
-          <h4>Summary:</h4>
-          <p className="summary">{summary}</p>
+          <div className="button-container">
+            <button className="button" onClick={handleSummarizeClick} disabled={!textInput.trim().length}>
+              Summarize
+            </button>
+          </div>
         </div>
-      )}
+
+        <div className="output-container">
+          {error && <div className="error">{error}</div>}
+          {summary && (
+            <div className="response-box">
+              <h4>Summary:</h4>
+              <div className="summary-text">
+                {summary.split('\n').map((sentence, index) => (
+                  <p key={index}>{sentence}</p>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
