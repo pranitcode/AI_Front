@@ -13,6 +13,7 @@ const App = () => {
 
   const handleSummarizeClick = () => {
     axios.post('/app/summarize', { text: textInput }, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       }
