@@ -11,7 +11,7 @@ const App = () => {
   };
 
   const handleSummarizeClick = () => {
-    fetch('/app/summarize', {
+    fetch('https://llama2-endpoint.onrender.com/app/summarize', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
